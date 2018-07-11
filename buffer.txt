@@ -1,0 +1,124 @@
+parse.cpp: In member function ‘std::unique_ptr<component> executionLine::init(std::vector<std::basic_string<char> >, Scope, int)’:
+parse.cpp:285:24: error: no matching function for call to ‘executionLine::init(std::vector<std::basic_string<char> >&)’
+          {init(leftArgs), init(rightArgs)},
+                        ^
+parse.cpp:244:24: note: candidate: std::unique_ptr<component> executionLine::init(std::vector<std::basic_string<char> >, Scope, int)
+  unique_ptr<component> init(vector<string> args, Scope scope, int lineNumber){
+                        ^
+parse.cpp:244:24: note:   candidate expects 3 arguments, 1 provided
+parse.cpp:285:41: error: no matching function for call to ‘executionLine::init(std::vector<std::basic_string<char> >&)’
+          {init(leftArgs), init(rightArgs)},
+                                         ^
+parse.cpp:244:24: note: candidate: std::unique_ptr<component> executionLine::init(std::vector<std::basic_string<char> >, Scope, int)
+  unique_ptr<component> init(vector<string> args, Scope scope, int lineNumber){
+                        ^
+parse.cpp:244:24: note:   candidate expects 3 arguments, 1 provided
+parse.cpp:286:27: error: no matching function for call to ‘execution::execution(std::string, <brace-enclosed initializer list>, Scope&, int&)’
+          scope, lineNumber));
+                           ^
+parse.cpp:234:2: note: candidate: execution::execution(std::string, std::vector<std::unique_ptr<component> >, Scope, int)
+  execution(string inputName, vector<unique_ptr<component>> inputArguments,
+  ^
+parse.cpp:234:2: note:   no known conversion for argument 2 from ‘<brace-enclosed initializer list>’ to ‘std::vector<std::unique_ptr<component> >’
+parse.cpp:231:7: note: candidate: execution::execution(const execution&)
+ class execution : public component{//function call
+       ^
+parse.cpp:231:7: note:   candidate expects 1 argument, 4 provided
+parse.cpp:231:7: note: candidate: execution::execution(execution&&)
+parse.cpp:231:7: note:   candidate expects 1 argument, 4 provided
+parse.cpp: In constructor ‘executionLine::executionLine(basicLine)’:
+parse.cpp:331:45: error: no matching function for call to ‘literal::literal(std::string&)’
+     literal* test = new literal(inputLine[0]);//shouldn't work
+                                             ^
+parse.cpp:219:2: note: candidate: literal::literal(std::string, Scope, int)
+  literal(string inputName, Scope inputScope, int inputLine) :
+  ^
+parse.cpp:219:2: note:   candidate expects 3 arguments, 1 provided
+parse.cpp:216:7: note: candidate: literal::literal(const literal&)
+ class literal : public component{//literal value
+       ^
+parse.cpp:216:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const literal&’
+parse.cpp:216:7: note: candidate: literal::literal(literal&&)
+parse.cpp:216:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘literal&&’
+parse.cpp:336:60: error: no matching function for call to ‘component::component(std::string&)’
+     return unique_ptr<component>(new component(inputLine[0]));
+                                                            ^
+parse.cpp:209:2: note: candidate: component::component(std::string, Scope, int)
+  component(string inputName, Scope inputScope, int inputLine){
+  ^
+parse.cpp:209:2: note:   candidate expects 3 arguments, 1 provided
+parse.cpp:203:7: note: candidate: component::component(const component&)
+ class component{//variable
+       ^
+parse.cpp:203:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘const component&’
+parse.cpp:203:7: note: candidate: component::component(component&&)
+parse.cpp:203:7: note:   no known conversion for argument 1 from ‘std::string {aka std::basic_string<char>}’ to ‘component&&’
+parse.cpp:336:61: error: returning a value from a constructor
+     return unique_ptr<component>(new component(inputLine[0]));
+                                                             ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/char_traits.h:39:0,
+                 from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/string:40,
+                 from parse.cpp:1:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = const std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:402:44:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = const std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:438:45:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = __gnu_cxx::__normal_iterator<const std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >; _OI = __gnu_cxx::__normal_iterator<std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:471:8:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = __gnu_cxx::__normal_iterator<const std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >; _OI = __gnu_cxx::__normal_iterator<std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/vector.tcc:206:31:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = std::unique_ptr<component>; _Alloc = std::allocator<std::unique_ptr<component> >]’
+parse.cpp:238:13:   required from here
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:340:18: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>& std::unique_ptr<_Tp, _Dp>::operator=(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = component; _Dp = std::default_delete<component>]’
+        *__result = *__first;
+                  ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/memory:81:0,
+                 from parse.cpp:6:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/unique_ptr.h:357:19: note: declared here
+       unique_ptr& operator=(const unique_ptr&) = delete;
+                   ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/char_traits.h:39:0,
+                 from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/string:40,
+                 from parse.cpp:1:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h: In instantiation of ‘static _OI std::__copy_move<false, false, std::random_access_iterator_tag>::__copy_m(_II, _II, _OI) [with _II = std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:402:44:   required from ‘_OI std::__copy_move_a(_II, _II, _OI) [with bool _IsMove = false; _II = std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:438:45:   required from ‘_OI std::__copy_move_a2(_II, _II, _OI) [with bool _IsMove = false; _II = std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:471:8:   required from ‘_OI std::copy(_II, _II, _OI) [with _II = std::unique_ptr<component>*; _OI = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/vector.tcc:211:17:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = std::unique_ptr<component>; _Alloc = std::allocator<std::unique_ptr<component> >]’
+parse.cpp:238:13:   required from here
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_algobase.h:340:18: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>& std::unique_ptr<_Tp, _Dp>::operator=(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = component; _Dp = std::default_delete<component>]’
+        *__result = *__first;
+                  ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/memory:81:0,
+                 from parse.cpp:6:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/unique_ptr.h:357:19: note: declared here
+       unique_ptr& operator=(const unique_ptr&) = delete;
+                   ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/vector:62:0,
+                 from parse.cpp:3:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_construct.h: In instantiation of ‘void std::_Construct(_T1*, _Args&& ...) [with _T1 = std::unique_ptr<component>; _Args = {std::unique_ptr<component, std::default_delete<component> >&}]’:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:75:18:   required from ‘static _ForwardIterator std::__uninitialized_copy<_TrivialValueTypes>::__uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = std::unique_ptr<component>*; _ForwardIterator = std::unique_ptr<component>*; bool _TrivialValueTypes = false]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:126:15:   required from ‘_ForwardIterator std::uninitialized_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = std::unique_ptr<component>*; _ForwardIterator = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:281:37:   required from ‘_ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, std::allocator<_Tp>&) [with _InputIterator = std::unique_ptr<component>*; _ForwardIterator = std::unique_ptr<component>*; _Tp = std::unique_ptr<component>]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/vector.tcc:213:35:   required from ‘std::vector<_Tp, _Alloc>& std::vector<_Tp, _Alloc>::operator=(const std::vector<_Tp, _Alloc>&) [with _Tp = std::unique_ptr<component>; _Alloc = std::allocator<std::unique_ptr<component> >]’
+parse.cpp:238:13:   required from here
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_construct.h:75:7: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = component; _Dp = std::default_delete<component>]’
+     { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+       ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/memory:81:0,
+                 from parse.cpp:6:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/unique_ptr.h:356:7: note: declared here
+       unique_ptr(const unique_ptr&) = delete;
+       ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/vector:62:0,
+                 from parse.cpp:3:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_construct.h: In instantiation of ‘void std::_Construct(_T1*, _Args&& ...) [with _T1 = std::unique_ptr<component>; _Args = {const std::unique_ptr<component, std::default_delete<component> >&}]’:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:75:18:   required from ‘static _ForwardIterator std::__uninitialized_copy<_TrivialValueTypes>::__uninit_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >; _ForwardIterator = std::unique_ptr<component>*; bool _TrivialValueTypes = false]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:126:15:   required from ‘_ForwardIterator std::uninitialized_copy(_InputIterator, _InputIterator, _ForwardIterator) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >; _ForwardIterator = std::unique_ptr<component>*]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_uninitialized.h:281:37:   required from ‘_ForwardIterator std::__uninitialized_copy_a(_InputIterator, _InputIterator, _ForwardIterator, std::allocator<_Tp>&) [with _InputIterator = __gnu_cxx::__normal_iterator<const std::unique_ptr<component>*, std::vector<std::unique_ptr<component> > >; _ForwardIterator = std::unique_ptr<component>*; _Tp = std::unique_ptr<component>]’
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_vector.h:322:31:   required from ‘std::vector<_Tp, _Alloc>::vector(const std::vector<_Tp, _Alloc>&) [with _Tp = std::unique_ptr<component>; _Alloc = std::allocator<std::unique_ptr<component> >]’
+parse.cpp:322:23:   required from here
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/stl_construct.h:75:7: error: use of deleted function ‘std::unique_ptr<_Tp, _Dp>::unique_ptr(const std::unique_ptr<_Tp, _Dp>&) [with _Tp = component; _Dp = std::default_delete<component>]’
+     { ::new(static_cast<void*>(__p)) _T1(std::forward<_Args>(__args)...); }
+       ^
+In file included from /usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/memory:81:0,
+                 from parse.cpp:6:
+/usr/lib/gcc/x86_64-pc-cygwin/5.4.0/include/c++/bits/unique_ptr.h:356:7: note: declared here
+       unique_ptr(const unique_ptr&) = delete;
+       ^
